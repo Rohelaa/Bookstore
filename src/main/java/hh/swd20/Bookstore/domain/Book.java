@@ -15,16 +15,16 @@ public class Book {
 	private String author;
 	private String year;
 	private String isbn;
-	private double hinta;
+	private double price;
 	
-	public Book(String title, String author, String year, String isbn, double hinta) {
+	public Book(String title, String author, String year, String isbn, double price) {
 		super();
 		this.id = null;
 		this.title = title;
 		this.author = author;
 		this.year = year;
 		this.isbn = isbn;
-		this.hinta = hinta;
+		this.price = price;
 	}
 	
 	public Book() {
@@ -64,16 +64,18 @@ public class Book {
 	}
 
 	public double getPrice() {
-		return hinta;
+		return price;
+	}
+	
+	public void setPrice(double price) {
+		this.price = price;
 	}
 
-	public void setPrice(double price) {
-		this.hinta = price;
-	}
+
 
 	@Override
 	public String toString() {
-		return "Book [title=" + title + ", author=" + author + ", year=" + year + ", isbn=" + isbn + ", price=" + hinta
+		return "Book [title=" + title + ", author=" + author + ", year=" + year + ", isbn=" + isbn + ", price=" + price
 				+ "]";
 	}
 	
