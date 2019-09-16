@@ -3,10 +3,11 @@
 <head>
 <meta charset="utf-8">
 <title>Booklist</title>
+<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}"/>
 </head>
 <body>
 	<h1>Books</h1>
-	<table>
+	<table class="table table-striped">
 		<tr>
 			<th>Author</th>
 			<th>Title</th>
@@ -18,9 +19,11 @@
 			<td th:text="${book.title}"></td>
 			<td th:text="${book.isbn}"></td>
 			<td th:text="${book.year}"></td>
+			<td><a class="btn btn-danger" th:href="@{/delete/{id}(id=${book.id})}">Delete</a></td>
+			<td><a class="btn btn-light" th:href="@{/edit/{id}(id=${book.id})}">Edit</a></td>
 		</tr>
 		<tr>
-		<td><a href="/addbook">Add book</a></td>
+		<td><a class="btn btn-success" href="/addbook">Add book</a></td>
 		</tr>
 	</table>
 </body>
