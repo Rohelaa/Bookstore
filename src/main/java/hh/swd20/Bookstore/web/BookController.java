@@ -1,5 +1,7 @@
 package hh.swd20.Bookstore.web;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,6 +27,11 @@ public class BookController {
 	public String getBooks(Model model) {
 		model.addAttribute("books", bookRepository.findAll());
 		return "booklist";
+	}
+	
+	@RequestMapping(value = "/books", method = RequestMethod.GET)
+	public List<Book> getBooksRest() {
+		return (List<Book>) bookRepository.findAll();
 	}
 	
 	@RequestMapping("/addbook")
