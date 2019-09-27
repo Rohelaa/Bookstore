@@ -7,6 +7,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Book {
 
@@ -22,6 +24,7 @@ public class Book {
 	// Yhdellä kategorialla voi olla monta kirjaa
 	// Yhdellä kirjalla voi olla yksi kategoria
 	@ManyToOne
+	@JsonIgnore
 	@JoinColumn(name = "categoryId")
 	private Category category;
 	
