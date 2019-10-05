@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -61,7 +62,9 @@ public class BookController {
 	// PathVariable poimii urlista muuttujan id, joka talletetaan muuttujaan bookId
 	// tämän perusteella poistetaan reposta sinne talletettu Book-olio
 	
+	
 	@RequestMapping(value = "/delete/{id}")
+	@PreAuthorize("hasRole('ADMIN')")
 	public String deleteBook(@PathVariable("id") Long bookId) { 
 		bookRepository.deleteById(bookId);
 		return "redirect:../booklist";
@@ -72,5 +75,10 @@ public class BookController {
 	public String editBook(@PathVariable("id") Long bookId, Model model) {
 		model.addAttribute("book", bookRepository.findById(bookId));
 		return "editbook";
+	}
+	
+	@RequestMapping(value = "/login")
+	public String login() {
+		return "login";
 	}
 }
