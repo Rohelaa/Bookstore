@@ -12,6 +12,8 @@ import hh.swd20.Bookstore.domain.Book;
 import hh.swd20.Bookstore.domain.BookRepository;
 import hh.swd20.Bookstore.domain.Category;
 import hh.swd20.Bookstore.domain.CategoryRepository;
+import hh.swd20.Bookstore.domain.User;
+import hh.swd20.Bookstore.domain.UserRepository;
 
 @SpringBootApplication
 public class BookstoreApplication {
@@ -23,7 +25,9 @@ public class BookstoreApplication {
 	}
 	
 	@Bean
-	public CommandLineRunner bookdemo(BookRepository repository, CategoryRepository categoryRepository) {
+	public CommandLineRunner bookdemo(BookRepository repository, CategoryRepository categoryRepository, UserRepository userRepository) {
+		
+		
 		return (args) -> {
 			
 			log.info("let's add some categories");
@@ -39,6 +43,11 @@ public class BookstoreApplication {
 				log.info(book.toString());
 			}
 			
+			User user1 = new User("user", "$2y$10$fcqC0pjwr4cEt1Grk4qzUe9OpoVCWsJ.M0zuAEs/MDlrEnpeo.COu", "user1@user.com", "USER");
+			User user2 = new User("admin", "$2y$12$Wn4YOzbjz8X4qYB8IUpqQutqciRDUsFfdGxXX9cbgz4Iq3ABTOTwW", "user2@user.com", "ADMIN");
+			
+			userRepository.save(user1);
+			userRepository.save(user2);
 			
 			
 		};
