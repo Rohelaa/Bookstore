@@ -35,11 +35,14 @@ public class BookController {
 		return "booklist";
 	}
 	
-	// RESTful palvelut
+	// REST-service
+	
 	@RequestMapping(value = "/books", method = RequestMethod.GET)
 	public @ResponseBody List<Book> getBooksRest() {
 		return (List<Book>) bookRepository.findAll();
 	}
+	
+	// REST-service
 	
 	@RequestMapping(value = "/book/{id}", method = RequestMethod.GET)
 	public @ResponseBody Optional<Book> getBookRest(@PathVariable("id") Long bookId) {
@@ -61,7 +64,6 @@ public class BookController {
 	
 	// PathVariable poimii urlista muuttujan id, joka talletetaan muuttujaan bookId
 	// tämän perusteella poistetaan reposta sinne talletettu Book-olio
-	
 	
 	@RequestMapping(value = "/delete/{id}")
 	@PreAuthorize("hasAuthority('ADMIN')")
