@@ -10,16 +10,22 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import hh.swd20.Bookstore.web.BookController;
 
+import hh.swd20.Bookstore.web.UserDetailServiceImpl;
+
+
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class BookstoreApplicationTests {
 	
+
+	private BookController controller;
 	@Autowired
-	private BookController bookController;
+	private UserDetailServiceImpl userDetailService;
 
 	@Test
 	public void contextLoads() {
-		assertThat(bookController).isNotNull();
+		assertThat(controller).isNotNull();
+		assertThat(userDetailService).isNotNull();
 	}
 
 }
