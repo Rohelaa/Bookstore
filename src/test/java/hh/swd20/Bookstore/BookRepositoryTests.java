@@ -11,31 +11,18 @@ import org.springframework.test.context.junit4.SpringRunner;
 import hh.swd20.Bookstore.domain.Book;
 import hh.swd20.Bookstore.domain.BookRepository;
 import hh.swd20.Bookstore.domain.Category;
-import hh.swd20.Bookstore.domain.CategoryRepository;
 
 @RunWith(SpringRunner.class)
 @DataJpaTest
-public class RepositoryTests {
+public class BookRepositoryTests {
 
 	@Autowired
 	private BookRepository bookRepository;
-	@Autowired
-	private CategoryRepository categoryRepository;
 	
-	// Bookrepo tests
 	@Test
 	public void createNewBook() {
 		Book newBook = new Book("1984", "George Orwell", "1949", "-", 4.99, new Category("Dystopian fiction"));
 		bookRepository.save(newBook);
 		assertThat(newBook.getId()).isNotNull();
 	}
-	
-	// CategoryRepo tests
-	@Test
-	public void findByNameShouldReturnCategory() {
-		Category category = categoryRepository.findByName("Historia");
-		assertThat(category.getId()).isNotNull();
-		assertThat(categoryRepository.findByName("Historia")).getClass().equals(Category.class);
-	}
-	
 }
