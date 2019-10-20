@@ -17,7 +17,7 @@ import hh.swd20.Bookstore.web.UserDetailServiceImpl;
 @SpringBootTest
 public class BookstoreApplicationTests {
 	
-
+	@Autowired
 	private BookController controller;
 	@Autowired
 	private UserDetailServiceImpl userDetailService;

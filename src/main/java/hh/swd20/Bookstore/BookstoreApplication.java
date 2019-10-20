@@ -35,8 +35,8 @@ public class BookstoreApplication {
 			categoryRepository.save(new Category("Psykologia"));
 			
 			log.info("let's save few books");
-			repository.save(new Book("12 elämänohjetta", "Jordan B. Peterson", "2018", "34343", 24.99, categoryRepository.findByName("Psykologia")));
-			repository.save(new Book("Sapiens", "Yuval Noah Harari", "2011", "b456", 10.95, categoryRepository.findByName("Historia")));
+			repository.save(new Book("12 elämänohjetta", "Jordan B. Peterson", "-", "34343", 24.99, categoryRepository.findByName("Psykologia")));
+			repository.save(new Book("Sapiens", "Yuval Noah Harari", "2011", "-", 10.95, categoryRepository.findByName("Historia")));
 	
 			log.info("Fetch all books");
 			for (Book book : repository.findAll()) {
